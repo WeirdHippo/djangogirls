@@ -87,3 +87,9 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+#사용자 정의 무시 파일
+myvenv
+db.sqlite3
+.DS_Store
+/.idea
