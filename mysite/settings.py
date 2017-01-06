@@ -25,7 +25,7 @@ SECRET_KEY = 'k=9ezg0!l%kv*y-*@0uzby%2mw=pkd++4v0-&!1pql$$w_r43r'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.asmr.com', 'asmr.com']
 
 
 # Application definition

@@ -19,6 +19,7 @@
     <![endif]-->
     <script>
         $(function(){
+
            $("#btn_search").click(
                function(){
                    $.ajax({
@@ -26,10 +27,13 @@
                         data: {
                             "keyword": $("input[name='keyword']").val()
                         },
-                        dataType: "json",
                         method: "POST",
                         success: function (data, textStatus, jqXHR) {
                             console.log(data);
+                            videoId = data.name.items[1].id.videoId;
+                            console.log(videoId);
+                            console.log('<iframe width="300" height="300" src="https://www.youtube.com/embed/"'+  videoId  +' frameborder= "0" allowfullscreen></iframe>');
+                            $("#ut-div").prepend('<iframe width="300" height="300" src="https://www.youtube.com/embed/'+  videoId  +' " frameborder= "0" allowfullscreen></iframe>');
                         }
                     });
                }
@@ -49,6 +53,8 @@
     <center><button type="button" class="btn btn-warning btn-sm" id="btn_search"><span class="glyphicon glyphicon-search" aria-hidden="true"> 검색</span></button>
     </center>
     </form>
+    <div id="ut-div">
+    </div>
 </div>
 
 
