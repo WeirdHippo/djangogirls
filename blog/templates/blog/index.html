@@ -19,40 +19,40 @@
     <![endif]-->
     <script>
         $(function(){
-
-           $("#btn_search").click(
-               function(){
-                   $.ajax({
-                        url: "search",
-                        data: {
-                            "keyword": $("input[name='keyword']").val()
-                        },
-                        method: "POST",
-                        success: function (data, textStatus, jqXHR) {
-                            console.log(data);
-                            videoId = data.name.items[1].id.videoId;
-                            console.log(videoId);
-                            console.log('<iframe width="300" height="300" src="https://www.youtube.com/embed/"'+  videoId  +' frameborder= "0" allowfullscreen></iframe>');
-                            $("#ut-div").prepend('<iframe width="300" height="300" src="https://www.youtube.com/embed/'+  videoId  +' " frameborder= "0" allowfullscreen></iframe>');
-                        }
-                    });
-               }
-           )
+            $('#asmr_number').keydown(function (event) {
+                if(event.which == 13){//키가 13이면 실행 (엔터는 13)
+                    $("#btn_search").click();
+                }
+            });
+           $("#btn_search").click(function(){
+               $.ajax({
+                    url: "search_api",
+                    data: {
+                        "keyword": $("input[name='keyword']").val()
+                    },
+                    method: "POST",
+                    success: function (data, textStatus, jqXHR) {
+                        console.log(data);
+                        videoId = data.name.items[1].id.videoId;
+                        console.log(videoId);
+                        console.log('<iframe width="300" height="300" src="https://www.youtube.com/embed/"'+  videoId  +' frameborder= "0" allowfullscreen></iframe>');
+                        $("#ut-div").prepend('<iframe width="900" height="180" src="https://www.youtube.com/embed/'+  videoId  +' " frameborder= "0" allowfullscreen></iframe>');
+                    }
+                });
+           });
         });
     </script>
 </head>
 
 <body bgcolor="#b8860b">
 <div class="container">
-    <form action="search" method="post">
         <center><img src="http://ext.fmkorea.com/files/attach/new/20161005/486616/23015114/478064674/af9ac6a436f723f7f8ca645660b52d7a.gif" width=300 height="340"/></center>
 <br>
 <center>   <input type="text" name="keyword" class="form-control input-sm text-center" style="width: 60%" id="asmr_number" >
 </center>
 <br>
     <center><button type="button" class="btn btn-warning btn-sm" id="btn_search"><span class="glyphicon glyphicon-search" aria-hidden="true"> 검색</span></button>
-    </center>
-    </form>
+    </center><br>
     <div id="ut-div">
     </div>
 </div>

@@ -45,6 +45,7 @@ def search_api(request):
     #search_name(a)
     return JsonResponse({ "word" : search_word(a) , "name" : search_name(a)})
 
+
 def form(request):
     return  render(request, 'blog/form.html', {})
 
